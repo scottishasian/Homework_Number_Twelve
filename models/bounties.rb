@@ -45,4 +45,17 @@ class Bounties
     bounties_as_objects = bounties.map{|bounty| Bounties.new(bounty)}
     return bounties_as_objects
   end
+
+  def self.delete_all()
+    db = PG.connect({
+      dbname: 'spacecowboys',
+      host: 'localhost'
+      })
+    sql = "DELETE FROM bounty_info"
+    values = []
+    db.prepare("delete_all", sql)
+    db.exec_prepared("delete_all", values)
+    db.close
+  end
+
 end
