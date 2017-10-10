@@ -1,7 +1,7 @@
 require ( 'pry' )
 require_relative ( 'models/bounties.rb' )
 
-Bounties.delete_all
+# Bounties.delete_all
 
 bounty_1 = Bounties.new(
   {
