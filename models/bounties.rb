@@ -30,4 +30,19 @@ class Bounties
     @id = results[0]['id'].to_i
     db.close()
   end
+
+  def self.all()
+    db = PG.connect({
+      dbname: 'spacecowboys',
+      host: 'localhost'
+      })
+    sql = "SELECT * FROM bounty_info"
+    values = []
+    db.prepare("all", sql)
+    bounties = db.exec_prepared("all", values)
+    db.close()
+
+    bounties_as_objects = bounties.map{|bounty| Bounties.new(bounty)}
+    return bounties_as_objects
+  end
 end
