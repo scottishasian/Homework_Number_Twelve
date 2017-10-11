@@ -85,4 +85,21 @@ class Bounties
     db.exec_prepared("update", values)
     db.close
   end
+
+  # def self.find(id_number)
+  #   db = PG.connect({
+  #     dbname: 'spacecowboys',
+  #     host: 'localhost'
+  #     })
+  #   sql = "SELECT * FROM bounty_info
+  #         WHERE id = $1"
+  #   values = [@id]
+  #   db.prepare("find", sql)
+  #   find_bounty = db.exec_prepared("find", values)
+  #   db.close()
+  #
+  #   found_bounty = find_bounty.map{|bounty| Bounties.new(bounty)}
+  #   return found_bounty
+  # end
+
 end
